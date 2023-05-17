@@ -1,0 +1,5 @@
+Entry myEntry = new Entry();
+myEntry.Store("What is your name?","Matthew Manley","8 May 2023");
+
+Entry yourEntry = new Entry();
+yourEntry.Store("What is your fav food?","Peanut Butter","8 May 2023");

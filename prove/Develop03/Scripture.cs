@@ -5,17 +5,15 @@ namespace Develop03
     public class Scripture
     {
         private string reference;
-        /// List<Word>
+
         private List<Word> list = new List<Word>();
 
-        /// Scripture(List<word>)
         public Scripture(string reference, List<Word> words)
         {
             list = words;
             this.reference = reference;
         }
 
-        /// HideRandomWord()
         public void HideRandomWord()
         {
             Random random = new Random();
@@ -24,7 +22,6 @@ namespace Develop03
             word.Hide();
         }
 
-        /// AsString()
         public string AsString()
         {
             string text = $"{reference}\n";

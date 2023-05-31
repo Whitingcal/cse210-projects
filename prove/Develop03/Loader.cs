@@ -16,7 +16,6 @@ namespace Develop03
             ///scriptureDict[""] = "";
         }
 
-        /// FindRandomScripture()
         public Scripture FindRandomScripture()
         {
             List<string> keys = new List<string>(scriptureDict.Keys);

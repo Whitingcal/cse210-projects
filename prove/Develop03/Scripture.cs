@@ -8,8 +8,6 @@ namespace Develop03
         /// List<Word>
         private List<Word> list = new List<Word>();
 
-        /// lastHiddenWordIndex
-
         /// Scripture(List<word>)
         public Scripture(string reference, List<Word> words)
         {
@@ -25,8 +23,6 @@ namespace Develop03
             Word word = list[index];
             word.Hide();
         }
-
-        /// ShowLastHiddenWord()
 
         /// AsString()
         public string AsString()

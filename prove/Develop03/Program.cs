@@ -22,10 +22,6 @@ namespace Develop03
                 scripture.HideRandomWord();
                 Console.Clear();
             }
-
-            ///scripture.HideRandomWord();
-
-            ///Console.WriteLine(scripture.AsString());
         }
     }
 }

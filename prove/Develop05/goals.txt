@@ -1,0 +1,3 @@
+SimpleGoal:|Complete Programming assignment|Turn in assignment for CSE210|100|1
+EternalGoal:|Read Scriptures|1 Chapter a Day|10|2
+ChecklistGoal:|Check all three goal types|go complete them each time|10|3|3

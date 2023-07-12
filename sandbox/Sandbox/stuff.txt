@@ -1,0 +1,195 @@
+using System;
+using System.Collections.Generic;
+
+// Base class for marking principles/ordinances
+abstract class Visit
+{
+    public abstract void MarkOff();
+}
+
+// Person class
+class Person
+{
+    public string Name { get; set; }
+    public List<string> LessonsTaught { get; set; }
+    public List<string> CommitmentsKept { get; set; }
+    public List<string> OrdinancesReceived { get; set; }
+
+    public Person(string name)
+    {
+        Name = name;
+        LessonsTaught = new List<string>();
+        CommitmentsKept = new List<string>();
+        OrdinancesReceived = new List<string>();
+    }
+}
+
+// Lessons class
+class Lessons : Visit
+{
+    private List<string> principles;
+
+    public Lessons(List<string> principles)
+    {
+        this.principles = principles;
+    }
+
+    public void AddPrinciple(string principle)
+    {
+        principles.Add(principle);
+    }
+
+    public override void MarkOff()
+    {
+        Console.WriteLine("Principle taught marked off.");
+    }
+}
+
+// Ordinances class
+class Ordinances : Visit
+{
+    private List<string> ordinances;
+
+    public Ordinances(List<string> ordinances)
+    {
+        this.ordinances = ordinances;
+    }
+
+    public void AddOrdinance(string ordinance)
+    {
+        ordinances.Add(ordinance);
+    }
+
+    public override void MarkOff()
+    {
+        Console.WriteLine("Ordinance completed marked off.");
+    }
+}
+
+// EcclesiasticalLeader class
+class EcclesiasticalLeader
+{
+    public bool IsReadyForOrdinance(Person person, Lessons lessons)
+    {
+        foreach (string principle in lessons.LessonsTaught)
+        {
+            if (!person.LessonsTaught.Contains(principle))
+                return false;
+        }
+
+        foreach (string commitment in person.CommitmentsKept)
+        {
+            if (!lessons.LessonsTaught.Contains(commitment))
+                return false;
+        }
+
+        return true;
+    }
+}
+
+// Loader class (parent)
+class Loader
+{
+    public virtual void Load() { }
+}
+
+// LessonLoader class (child of Loader)
+class LessonLoader : Loader
+{
+    public override void Load()
+    {
+        Console.WriteLine("Loading principles...");
+        // Load principles to be passed to Lessons
+    }
+}
+
+// OrdinanceLoader class (child of Loader)
+class OrdinanceLoader : Loader
+{
+    public override void Load()
+    {
+        Console.WriteLine("Loading ordinances...");
+        // Load ordinances to be passed to Ordinances
+    }
+}
+
+// Invitations class
+class Invitations : Visit
+{
+    private List<string> invitations;
+
+    public Invitations(List<string> invitations)
+    {
+        this.invitations = invitations;
+    }
+
+    public void ExtendInvitation(string invitation)
+    {
+        invitations.Add(invitation);
+    }
+
+    public override void MarkOff()
+    {
+        Console.WriteLine("Invitation extended marked off.");
+    }
+}
+
+// Menu class
+class Menu
+{
+    public void ShowMenu()
+    {
+        Console.WriteLine("1. Mark a principle taught");
+        Console.WriteLine("2. Mark an invitation extended");
+        Console.WriteLine("3. Mark an ordinance complete");
+        Console.WriteLine("4. Exit");
+
+        int choice;
+        do
+        {
+            Console.Write("Enter your choice: ");
+            choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    // Mark a principle taught
+                    Lessons lessons = new Lessons(new List<string>());
+                    lessons.MarkOff();
+                    break;
+                case 2:
+                    // Mark an invitation extended
+                    Invitations invitations = new Invitations(new List<string>());
+                    invitations.MarkOff();
+                    break;
+                case 3:
+                    // Mark an ordinance complete
+                    Ordinances ordinances = new Ordinances(new List<string>());
+                    ordinances.MarkOff();
+                    break;
+                case 4:
+                    Console.WriteLine("Exiting...");
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
+            }
+        } while (choice != 4);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Example usage of the classes
+        LessonLoader lessonLoader = new LessonLoader();
+        lessonLoader.Load();
+
+        OrdinanceLoader ordinanceLoader = new OrdinanceLoader();
+        ordinanceLoader.Load();
+
+        Menu menu = new Menu();
+        menu.ShowMenu();
+    }
+}

@@ -1,9 +1,20 @@
 using System;
 
-class Program
+namespace Sandbox
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Sandbox World!");
+        static void Main(string[] args)
+        {
+            // Example usage of the classes
+            LessonLoader lessonLoader = new LessonLoader();
+            lessonLoader.Load();
+
+            OrdinanceLoader ordinanceLoader = new OrdinanceLoader();
+            ordinanceLoader.Load();
+
+            Menu menu = new Menu();
+            menu.ShowMenu();
+        }
     }
 }
